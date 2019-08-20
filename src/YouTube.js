@@ -106,7 +106,7 @@ class YouTube {
       if (e.deltaY > 0) {
         this.resetTransformation(e);
         let transformLimit = (this.videoSize * this.videoCounter
-         - this.videoSize * this.visibleVideoItems * 2);
+          - this.videoSize * this.visibleVideoItems * 2);
         // this counts so: size of video item(300px) *
         // video which can be displayed(some video, from video3Api don't have id)
         // minus size of 4 visible video items on the screen
@@ -117,13 +117,13 @@ class YouTube {
         // before the first wheel request is done - we should plus size of 4 video items,
         // because the first 4 video item now take a part in formation transform.
         if (this.pageToken && translateValue
-        % transformLimit === 0
-        && translateValue < -100) {
-        // start fetch, when it reaches the transformation limit.
-        // transformation limit - this is the extreme size of the transform, for which,
-        // at the next scrolling, the fetch will begins.
-        // to be sure not to see this.
-        // http://prntscr.com/nyxunj
+          % transformLimit === 0
+          && translateValue < -100) {
+          // start fetch, when it reaches the transformation limit.
+          // transformation limit - this is the extreme size of the transform, for which,
+          // at the next scrolling, the fetch will begins.
+          // to be sure not to see this.
+          // http://prntscr.com/nyxunj
           fetch(`${config.searchApiPath(this.search.value, this.maxResult)}&pageToken=${this.pageToken}`)
             .then(response => response.json())
             .then((wheelResult) => {
